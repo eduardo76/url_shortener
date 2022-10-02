@@ -28,7 +28,11 @@ services:
       - ./app:/usr/src/app
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - "8196:80" # ALTERAR PARA HLG
+      - "8080:80"
+      - "443:443"
+    depends_on:
+      - app
+
   # pgadmin:
   #   container_name: pgadmin
   #   image: dpage/pgadmin4
