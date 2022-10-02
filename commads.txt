@@ -1,0 +1,5 @@
+alembic init alembic
+alembic revision -m "fist" --autogenerate
+alembic revision -m "fist"
+alembic upgrade head
+alembic downgrade -1
