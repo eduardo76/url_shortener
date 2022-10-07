@@ -11,6 +11,7 @@ from alembic import context
 from app.infra.config.settings import Settings
 
 from app.infra.config.db_base import Base
+from app.modules.url_shortener.infra.entities import UrlShortenerEntity
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # load_dotenv(os.path.join(BASE_DIR, ".env"))
 # sys.path.append(BASE_DIR)
