@@ -1,3 +1,7 @@
 venv
 .env
 commands.txt
+__pycache__
+venv
+storage.db
+.pytest_cache
