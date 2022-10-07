@@ -4,8 +4,6 @@ from sqlalchemy.orm import sessionmaker
 from app.infra.config import settings
 
 
-
-
 class DBConnectionHandler:
     """Sqlalchemy database connection"""
 
