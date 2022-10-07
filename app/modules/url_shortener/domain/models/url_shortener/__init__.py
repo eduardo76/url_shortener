@@ -1,1 +1,2 @@
 from .url_domain import UrlDomain
+from .url_repository_interface import UrlRepositoryInterface

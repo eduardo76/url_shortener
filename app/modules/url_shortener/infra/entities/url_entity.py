@@ -1,5 +1,5 @@
 import enum
-
+from sqlalchemy.sql import func
 from sqlalchemy import Column, String, Integer, ForeignKey, Enum, DateTime
 from app.modules.url_shortener.domain.models.url_shortener.url_domain import UrlDomain
 
@@ -18,8 +18,8 @@ class UrlShortenerEntity(Base):
     long_url = Column(String, nullable=False, unique=True)
     hash_url = Column(String, nullable=False)
     status_url = Column(Enum(Status), nullable=False)
-    created_at = Column(DateTime, nullable=False)
-    updated_at = Column(DateTime, nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
     def __init__(self, id_url: int, long_url: str, hash_ur: str, status_url: str, created_at: str, updated_at: str):
         self.id_url = id_url

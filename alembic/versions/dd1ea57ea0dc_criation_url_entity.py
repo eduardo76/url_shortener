@@ -1,8 +1,8 @@
 """criation url_entity
 
-Revision ID: 616b968a3413
+Revision ID: dd1ea57ea0dc
 Revises: 
-Create Date: 2022-10-07 01:56:22.496106
+Create Date: 2022-10-07 02:35:58.646233
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '616b968a3413'
+revision = 'dd1ea57ea0dc'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,8 +23,8 @@ def upgrade() -> None:
     sa.Column('long_url', sa.String(), nullable=False),
     sa.Column('hash_url', sa.String(), nullable=False),
     sa.Column('status_url', sa.Enum('active', 'inactive', name='status'), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=False),
-    sa.Column('updated_at', sa.DateTime(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
+    sa.Column('updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.PrimaryKeyConstraint('id_url'),
     sa.UniqueConstraint('long_url')
     )
