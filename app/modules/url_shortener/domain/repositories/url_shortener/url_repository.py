@@ -28,8 +28,7 @@ class UrlRepository(UrlRepositoryInterface):
                     id_url=url.id_url,
                     long_url=url.long_url,
                     hash_url=url.hash_url,
-                    status_url=url.status_url,
-                    created_at=url.created_at,
+                    status_url=url.status_url
                 )
 
                 db_connection.session.add(url_entity)
@@ -143,7 +142,6 @@ class UrlRepository(UrlRepositoryInterface):
                 url_entity.long_url = url.long_url
                 url_entity.hash_url = url.hash_url
                 url_entity.status_url = url.status_url
-                url_entity.created_at = url.created_at
 
                 db_connection.session.commit()
 
