@@ -1,7 +1,7 @@
 from typing import List
 from abc import ABC, abstractmethod
 
-from ...models.url_shortener.url_domain import UrlDomain
+from ..models import UrlDomain
 
 class UrlRepositoryInterface(ABC):
     """

@@ -4,8 +4,8 @@ from sqlalchemy.orm.exc import NoResultFound
 from app.infra.config.db_base import DBConnectionHandler
 
 from app.modules.url_shortener.infra.entities import UrlShortenerEntity
-from app.modules.url_shortener.domain.repositories.url_shortener.url_repository_interface import UrlRepositoryInterface
-from app.modules.url_shortener.domain.models.url_shortener.url_domain import UrlDomain
+from app.modules.url_shortener.domain.repositories.url_repository_interface import UrlRepositoryInterface
+from app.modules.url_shortener.domain.models.url_domain import UrlDomain
 
 
 class UrlRepository(UrlRepositoryInterface):
@@ -14,7 +14,7 @@ class UrlRepository(UrlRepositoryInterface):
     """
 
     @classmethod
-    def create(cls, url: UrlDomain) -> UrlDomain:
+    def create(cls, data: UrlDomain) -> UrlDomain:
         """
         Create a new url
 
@@ -25,10 +25,9 @@ class UrlRepository(UrlRepositoryInterface):
         try:
             with DBConnectionHandler() as db_connection:
                 url_entity = UrlShortenerEntity(
-                    id_url=url.id_url,
-                    long_url=url.long_url,
-                    hash_url=url.hash_url,
-                    status_url=url.status_url
+                    long_url=data.long_url,
+                    hash_url=data.hash_url,
+                    status_url=data.status_url
                 )
 
                 db_connection.session.add(url_entity)

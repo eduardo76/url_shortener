@@ -1,7 +1,7 @@
 import enum
 from sqlalchemy.sql import func
 from sqlalchemy import Column, String, Integer, ForeignKey, Enum, DateTime
-from app.modules.url_shortener.domain.models.url_shortener.url_domain import UrlDomain
+from app.modules.url_shortener.domain.models.url_domain import UrlDomain
 
 from app.infra.config.db_base import Base
 
