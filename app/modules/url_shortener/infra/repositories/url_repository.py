@@ -4,7 +4,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from app.infra.config.db_base import DBConnectionHandler
 
 from app.modules.url_shortener.infra.entities import UrlShortenerEntity
-from app.modules.url_shortener.domain.models.url_shortener.url_repository_interface import UrlRepositoryInterface
+from app.modules.url_shortener.domain.repositories.url_shortener.url_repository_interface import UrlRepositoryInterface
 from app.modules.url_shortener.domain.models.url_shortener.url_domain import UrlDomain
 
 
