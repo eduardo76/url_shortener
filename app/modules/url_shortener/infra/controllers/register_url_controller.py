@@ -25,13 +25,13 @@ class RegisterUrlController(RouterInterface):
 
         response  = None
 
+        print("http_request.body ==================: ", http_request)
+
         if http_request.body:
             body = http_request.body
 
-            if 'url' in body:
-                url = body['url']
-
-                response = self.register_url_service.register(url)
+            if body:
+                response = self.register_url_service.register(body)
             else:
                 response = {"success": False, "data": None} 
 
