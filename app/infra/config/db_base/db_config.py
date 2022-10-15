@@ -1,13 +1,15 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.infra.config import settings
+from app.infra.config import Settings, settings
 
+settings = Settings()
 
 class DBConnectionHandler:
     """Sqlalchemy database connection"""
 
     def __init__(self):
+        
         self.__connection_string = settings.pg_dsn
         self.session = None
 

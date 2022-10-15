@@ -8,13 +8,12 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from app.infra.config.settings import Settings
+from app.infra.config import Settings
 
 from app.infra.config.db_base import Base
-from app.modules.url_shortener.infra.entities import UrlShortenerEntity
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# load_dotenv(os.path.join(BASE_DIR, ".env"))
-# sys.path.append(BASE_DIR)
+
+target_metadata = Base.metadata
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
