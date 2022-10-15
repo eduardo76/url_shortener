@@ -1,16 +1,34 @@
-import asyncio
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Request, Header
 from pydantic import BaseModel
+
+from ..composer import register_url_composer
+from ..adapter import fast_api_adapter
 
 api = APIRouter()
 
 
-class Message(BaseModel):
-    message: str
+@api.post("/shorten")
+async def register_url(url: str):
+    """
+    Register URL
+    """
+
+    message = {}
+    request = dict()
+    request['request'] = Request
+    request['body'] = url
+    request['header'] = Header
+
+    response = fast_api_adapter(request=request, router=register_url_composer())
 
 
-@api.get("", response_model=Message)
-def hello():
-    # await asyncio.sleep(0.5)
-    return Message(message="Hello, world!")
+    if response.status_code < 300:
+        message = {"success": True, "data": response.body}
+
+        return message
+
+    message = {"success": False, "data": response.body}
+
+
+
