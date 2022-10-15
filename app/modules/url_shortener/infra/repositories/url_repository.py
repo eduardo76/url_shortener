@@ -36,13 +36,17 @@ class UrlRepository(UrlRepositoryInterface):
                 db_connection.session.commit()
 
                 return {
-                    "id_url": url_entity.id_url,
-                    "long_url": url_entity.long_url,
-                    "hash_url": url_entity.hash_url,
-                    "status_url": url_entity.status_url,
-                    "total_access": url_entity.total_access,
-                    "created_at": url_entity.created_at,
-                    "updated_at": url_entity.updated_at,
+                    "success": True,
+                    "message": "Url created successfully",
+                    "data": {
+                        "id_url": url_entity.id_url,
+                        "long_url": url_entity.long_url,
+                        "hash_url": url_entity.hash_url,
+                        "status_url": url_entity.status_url,
+                        "total_access": url_entity.total_access,
+                        "created_at": url_entity.created_at,
+                        "updated_at": url_entity.updated_at,
+                    },
                 }
             except Exception as e:
                 db_connection.session.rollback()
@@ -84,7 +88,19 @@ class UrlRepository(UrlRepositoryInterface):
             try:
                 url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(hash_url=hash_url).one()
 
-                return url_entity.to_domain()
+                return {
+                    "success": True,
+                    "message": "Hash already exists",
+                    "data": {
+                        "id_url": url_entity.id_url,
+                        "long_url": url_entity.long_url,
+                        "hash_url": url_entity.hash_url,
+                        "status_url": url_entity.status_url,
+                        "total_access": url_entity.total_access,
+                        "created_at": url_entity.created_at,
+                        "updated_at": url_entity.updated_at,
+                    },
+                }
             except NoResultFound:
                 return {"success": False, "data": "hash not found"}
             except:
@@ -147,7 +163,7 @@ class UrlRepository(UrlRepositoryInterface):
                 db_connection.session.close()
 
     @classmethod
-    def update(cls, url: UrlDomain) -> UrlDomain:
+    def update(cls, data: UrlDomain) -> UrlDomain:
         """
         Update url
 
@@ -157,15 +173,28 @@ class UrlRepository(UrlRepositoryInterface):
 
         with DBConnectionHandler() as db_connection:
             try:
-                url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(id_url=url.id_url).one()
+                url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(id_url=data['id_url']).one()
 
-                url_entity.long_url = url.long_url
-                url_entity.hash_url = url.hash_url
-                url_entity.status_url = url.status_url
+                url_entity.long_url = data['long_url']
+                url_entity.hash_url = data['hash_url']
+                url_entity.status_url = data['status_url']
+                url_entity.total_access = data['total_access']
 
                 db_connection.session.commit()
 
-                return url_entity.to_domain()
+                return {
+                    "success": True,
+                    "message": "Url updated successfully",
+                    "data": {
+                        "id_url": url_entity.id_url,
+                        "long_url": url_entity.long_url,
+                        "hash_url": url_entity.hash_url,
+                        "status_url": url_entity.status_url,
+                        "total_access": url_entity.total_access,
+                        "created_at": url_entity.created_at,
+                        "updated_at": url_entity.updated_at,
+                    }
+                }
             except:
                 db_connection.session.rollback()
                 raise
