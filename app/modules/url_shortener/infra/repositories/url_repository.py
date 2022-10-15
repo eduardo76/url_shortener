@@ -1,3 +1,4 @@
+import sys
 from typing import List
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -22,23 +23,31 @@ class UrlRepository(UrlRepositoryInterface):
         :return: UrlDomain
         """
 
-        try:
-            with DBConnectionHandler() as db_connection:
+        with DBConnectionHandler() as db_connection:
+            try:
                 url_entity = UrlShortenerEntity(
-                    long_url=data.long_url,
-                    hash_url=data.hash_url,
-                    status_url=data.status_url
+                    long_url=data["long_url"],
+                    hash_url=data["hash_url"],
+                    status_url=data["status_url"],
+                    total_access=data["total_access"],
                 )
 
                 db_connection.session.add(url_entity)
                 db_connection.session.commit()
 
-                return url_entity.to_domain()
-        except:
-            db_connection.session.rollback()
-            raise
-        finally:
-            db_connection.session.close()
+                return {
+                    "id_url": url_entity.id_url,
+                    "long_url": url_entity.long_url,
+                    "hash_url": url_entity.hash_url,
+                    "status_url": url_entity.status_url,
+                    "total_access": url_entity.total_access,
+                    "created_at": url_entity.created_at,
+                    "updated_at": url_entity.updated_at,
+                }
+            except Exception as e:
+                db_connection.session.rollback()
+            finally:
+                db_connection.session.close()
 
     @classmethod
     def get_by_id(cls, url_id: int) -> UrlDomain:
@@ -49,18 +58,18 @@ class UrlRepository(UrlRepositoryInterface):
         :return: UrlDomain
         """
 
-        try:
-            with DBConnectionHandler() as db_connection:
+        with DBConnectionHandler() as db_connection:
+            try:
                 url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(id_url=url_id).one()
 
                 return url_entity.to_domain()
-        except NoResultFound:
-            return 'Url not found'
-        except:
-            db_connection.session.rollback()
-            raise
-        finally:
-            db_connection.session.close()
+            except NoResultFound:
+                return {"success": False, "data": "Url not found"}
+            except:
+                db_connection.session.rollback()
+                raise
+            finally:
+                db_connection.session.close()
 
     @classmethod
     def get_by_hash(cls, hash_url: str) -> UrlDomain:
@@ -71,18 +80,18 @@ class UrlRepository(UrlRepositoryInterface):
         :return: UrlDomain
         """
 
-        try:
-            with DBConnectionHandler() as db_connection:
+        with DBConnectionHandler() as db_connection:
+            try:
                 url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(hash_url=hash_url).one()
 
                 return url_entity.to_domain()
-        except NoResultFound:
-            return 'Url not found'
-        except:
-            db_connection.session.rollback()
-            raise
-        finally:
-            db_connection.session.close()
+            except NoResultFound:
+                return {"success": False, "data": "hash not found"}
+            except:
+                db_connection.session.rollback()
+                raise
+            finally:
+                db_connection.session.close()
 
     @classmethod
     def get_by_long_url(cls, long_url: str) -> UrlDomain:
@@ -93,18 +102,30 @@ class UrlRepository(UrlRepositoryInterface):
         :return: UrlDomain
         """
 
-        try:
-            with DBConnectionHandler() as db_connection:
+        with DBConnectionHandler() as db_connection:
+            try:
                 url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(long_url=long_url).one()
 
-                return url_entity.to_domain()
-        except NoResultFound:
-            return 'Url not found'
-        except:
-            db_connection.session.rollback()
-            raise
-        finally:
-            db_connection.session.close()
+                return {
+                    "success": True,
+                    "message": "Url already exists",
+                    "data": {
+                        "id_url": url_entity.id_url,
+                        "long_url": url_entity.long_url,
+                        "hash_url": url_entity.hash_url,
+                        "status_url": url_entity.status_url,
+                        "total_access": url_entity.total_access,
+                        "created_at": url_entity.created_at,
+                        "updated_at": url_entity.updated_at,
+                    },
+                }
+            except NoResultFound:
+                return {"success": False, "data": "Url not found"}
+            except:
+                db_connection.session.rollback()
+                raise
+            finally:
+                db_connection.session.close()
 
     @classmethod
     def get_all(cls) -> List[UrlDomain]:
@@ -114,16 +135,16 @@ class UrlRepository(UrlRepositoryInterface):
         :return: List[UrlDomain]
         """
 
-        try:
-            with DBConnectionHandler() as db_connection:
+        with DBConnectionHandler() as db_connection:
+            try:
                 url_entities = db_connection.session.query(UrlShortenerEntity).all()
 
                 return [url_entity.to_domain() for url_entity in url_entities]
-        except:
-            db_connection.session.rollback()
-            raise
-        finally:
-            db_connection.session.close()
+            except:
+                db_connection.session.rollback()
+                raise
+            finally:
+                db_connection.session.close()
 
     @classmethod
     def update(cls, url: UrlDomain) -> UrlDomain:
@@ -134,8 +155,8 @@ class UrlRepository(UrlRepositoryInterface):
         :return: UrlDomain
         """
 
-        try:
-            with DBConnectionHandler() as db_connection:
+        with DBConnectionHandler() as db_connection:
+            try:
                 url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(id_url=url.id_url).one()
 
                 url_entity.long_url = url.long_url
@@ -145,11 +166,11 @@ class UrlRepository(UrlRepositoryInterface):
                 db_connection.session.commit()
 
                 return url_entity.to_domain()
-        except:
-            db_connection.session.rollback()
-            raise
-        finally:
-            db_connection.session.close()
+            except:
+                db_connection.session.rollback()
+                raise
+            finally:
+                db_connection.session.close()
 
     @classmethod
     def delete(cls, url_id: int) -> None:
@@ -160,14 +181,14 @@ class UrlRepository(UrlRepositoryInterface):
         :return: None
         """
 
-        try:
-            with DBConnectionHandler() as db_connection:
+        with DBConnectionHandler() as db_connection:
+            try:
                 url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(id_url=url_id).one()
 
                 db_connection.session.delete(url_entity)
                 db_connection.session.commit()
-        except:
-            db_connection.session.rollback()
-            raise
-        finally:
-            db_connection.session.close()
+            except:
+                db_connection.session.rollback()
+                raise
+            finally:
+                db_connection.session.close()
