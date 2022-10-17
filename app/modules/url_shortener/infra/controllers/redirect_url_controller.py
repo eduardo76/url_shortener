@@ -1,20 +1,22 @@
 from typing import Type
 
-from ...domain.models import RegisterUrlInterface
+from ...domain.models import RedirectUrlInterface
 from .....shared.interface.router import RouterInterface
 from .....shared.helpers import HttpRequest, HttpResponse
 from .....shared.errors import HttpErrors
 
 
-class RegisterUrlController(RouterInterface):
-    """Register URL Controller"""
+class RedirectUrlController(RouterInterface):
+    """
+    Register URL Controller
+    """
 
-    def __init__(self, register_url_service: Type[RegisterUrlInterface]):
+    def __init__(self, redirect_url_service: Type[RedirectUrlInterface]):
         """
         Constructor
-        :param register_url_use_case: Type[RegisterUrlInterface]
+        :param redirect_url_service: Type[RedirectUrlInterface]
         """
-        self.register_url_service = register_url_service
+        self.redirect_url_service = redirect_url_service
 
     def route(self, http_request: Type[HttpRequest]) -> HttpResponse:
         """
@@ -29,7 +31,7 @@ class RegisterUrlController(RouterInterface):
             body = http_request.body
 
             if body:
-                response = self.register_url_service.register(body)
+                response = self.redirect_url_service.redirect(body)
             else:
                 response = {"success": False, "data": None} 
 
@@ -41,6 +43,3 @@ class RegisterUrlController(RouterInterface):
 
         https_error = HttpErrors.error_400()
         return HttpResponse(status_code=https_error["status_code"], body=https_error["body"])
-
-
-

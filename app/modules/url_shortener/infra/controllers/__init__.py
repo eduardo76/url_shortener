@@ -1,1 +1,2 @@
 from .register_url_controller import RegisterUrlController
+from .redirect_url_controller import RedirectUrlController

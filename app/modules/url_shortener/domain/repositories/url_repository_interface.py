@@ -30,6 +30,13 @@ class UrlRepositoryInterface(ABC):
         raise Exception("Method not implemented")
 
     @abstractmethod
+    def get_by_id_hash(self, id_hash: int) -> UrlDomain:
+        """
+        Get url by id hash
+        """
+        raise Exception("Method not implemented")
+
+    @abstractmethod
     def get_by_long_url(self, long_url: str) -> UrlDomain:
         """
         Get url by long url

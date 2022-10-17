@@ -6,7 +6,10 @@ from app.modules.url_shortener.domain.repositories import UrlRepositoryInterface
 from app.modules.url_shortener.domain.models import RegisterUrlInterface
 from app.modules.url_shortener.domain.models import UrlDomain
 from app.shared.utils.utils import to_base62, generate_id
+from app.infra.config.settings import Settings
 
+
+settings = Settings()
 
 class RegisterUrlService(RegisterUrlInterface):
     """
@@ -37,6 +40,8 @@ class RegisterUrlService(RegisterUrlInterface):
 
             data = {
                 "long_url": url,
+                "short_url": f"{settings.BASE_URL}/{generated_hash}",
+                "id_hash": id,
                 "hash_url": generated_hash,
                 "status_url": "active",
                 "total_access": 0,
@@ -53,6 +58,8 @@ class RegisterUrlService(RegisterUrlInterface):
                 data = {
                     "id_url": response["data"]["id_url"],
                     "long_url": response["data"]["long_url"],
+                    "short_url": response["data"]["short_url"],
+                    "id_hash": response["data"]["id_hash"],
                     "hash_url": response["data"]["hash_url"],
                     "status_url": response["data"]["status_url"],
                     "total_access": response["data"]["total_access"] + 1,
