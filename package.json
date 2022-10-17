@@ -1,0 +1,47 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "author": "Natanael <contato@natandev.com.br>",
+  "description": "Encurtador de url",
+  "main": "index.js",
+  "scripts": {
+    "develop": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NatanSiilva/url_shortener.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NatanSiilva/url_shortener/issues"
+  },
+  "homepage": "https://github.com/NatanSiilva/url_shortener#readme",
+  "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.16.7",
+    "@babel/polyfill": "^7.12.1",
+    "embla-carousel": "^6.0.1",
+    "embla-carousel-autoplay": "^6.1.1",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^4.43.0",
+    "webpack-bundle-tracker": "0.4.3",
+    "webpack-cli": "^3.3.12"
+  }
+}

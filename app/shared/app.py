@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from .routes import api
 
@@ -7,5 +8,7 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
 )
+
+app.mount("/assets", StaticFiles(directory="app/shared/assets"), name="static")
 
 app.include_router(api, prefix="")
