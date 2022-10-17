@@ -5,9 +5,22 @@
 {% block content %}
     {% include 'parts/header.html' %}
     <main>
-        <h1>Home</h1>
+        <div class="content">
+            <div class="logo">
+                <img src="{{ url_for('static', path='images/logo-01.png') }}" alt="">
+            </div>
 
-        <p>Home page content goes here.</p>
+            <div class="form-shortner">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" placeholder="Paste your link here">
+                        <button type="submit">Shorten</button>
+                    </div>
+    
+                </form>
+            </div>
+
+        </div>
     </main>
     {% include 'parts/footer.html' %}
 {% endblock %}
