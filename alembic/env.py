@@ -10,7 +10,8 @@ from alembic import context
 
 from app.infra.config import Settings
 
-from app.infra.config.db_base import Base
+from app.infra.config.db_base.base import Base
+from app.modules.url_shortener.infra.entities import UrlShortenerEntity
 
 target_metadata = Base.metadata
 

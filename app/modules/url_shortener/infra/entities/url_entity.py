@@ -6,7 +6,7 @@ from app.modules.url_shortener.domain.models.url_domain import UrlDomain
 from app.infra.config.db_base import Base
 
 
-class Status(enum.Enum):
+class StatusEnum(enum.Enum):
     active = "active"
     inactive = "inactive"
 
@@ -15,9 +15,11 @@ class UrlShortenerEntity(Base):
     __tablename__ = "url_shortener"
 
     id_url = Column(Integer, primary_key=True, autoincrement=True, index=True)
-    long_url = Column(String, nullable=False, unique=True)
-    hash_url = Column(String, nullable=False)
-    status_url = Column(Enum(Status), nullable=False)
+    long_url = Column(String(255), unique=True)
+    short_url = Column(String(255), unique=True)
+    id_hash = Column(Integer, unique=True)
+    hash_url = Column(String(255), unique=True)
+    status_url = Column(Enum(StatusEnum))
     total_access = Column(Integer, default=0)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), server_onupdate=func.now())
@@ -27,6 +29,7 @@ class UrlShortenerEntity(Base):
         return UrlDomain(
             id_url=self.id_url,
             long_url=self.long_url,
+            id_hash=self.id_hash,
             hash_url=self.hash_url,
             total_access=self.total_access,
             status_url=self.status_url,
