@@ -26,4 +26,5 @@ Faker==14.1.0
 black==22.6.0
 flake8==5.0.4
 virtualenv==20.16.3
-pre-commit==2.20.0
+# pre-commit==2.20.0
+Jinja2==3.1.2

@@ -1,0 +1,30 @@
+@import "../commom/variables.scss";
+
+@mixin breakpoint($breakpoint) {
+   @if $breakpoint == $mobileSize {
+      @media only screen and (max-width: $mobileSize) {
+         @content;
+      } //600px
+   }
+   @if $breakpoint == $tabletSize {
+      @media only screen and (max-width: $tabletSize) {
+         @content;
+      } //900px
+   }
+   @if $breakpoint == $desktopSize {
+      @media only screen and (max-width: $desktopSize) {
+         @content;
+      } //1200px
+   }
+   @if $breakpoint == $desktopBigSize {
+      @media only screen and (min-width: $desktopBigSize) {
+         @content;
+      } //1500px
+   }
+}
+
+@mixin breakpoint-alternative($break) {
+   @media only screen and (max-width: $break) {
+      @content;
+   }
+}

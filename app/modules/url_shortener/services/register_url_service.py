@@ -11,6 +11,7 @@ from app.infra.config.settings import Settings
 
 settings = Settings()
 
+
 class RegisterUrlService(RegisterUrlInterface):
     """
     Register URL Service

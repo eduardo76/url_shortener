@@ -115,7 +115,6 @@ class UrlRepository(UrlRepositoryInterface):
             finally:
                 db_connection.session.close()
 
-
     @classmethod
     def get_by_id_hash(cls, id_hash: int) -> UrlDomain:
         """
@@ -218,13 +217,13 @@ class UrlRepository(UrlRepositoryInterface):
 
         with DBConnectionHandler() as db_connection:
             try:
-                url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(id_url=data['id_url']).one()
+                url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(id_url=data["id_url"]).one()
 
-                url_entity.long_url = data['long_url']
-                url_entity.short_url = data['short_url']
-                url_entity.hash_url = data['hash_url']
-                url_entity.status_url = data['status_url']
-                url_entity.total_access = data['total_access']
+                url_entity.long_url = data["long_url"]
+                url_entity.short_url = data["short_url"]
+                url_entity.hash_url = data["hash_url"]
+                url_entity.status_url = data["status_url"]
+                url_entity.total_access = data["total_access"]
 
                 db_connection.session.commit()
 
@@ -241,7 +240,7 @@ class UrlRepository(UrlRepositoryInterface):
                         "total_access": url_entity.total_access,
                         "created_at": url_entity.created_at,
                         "updated_at": url_entity.updated_at,
-                    }
+                    },
                 }
             except:
                 db_connection.session.rollback()
