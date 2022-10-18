@@ -1,0 +1,120 @@
+@import "../commom/variables.scss";
+
+main {
+    width: 100%;
+    height: 65%;
+    // height: calc(100vh - #{$headerHeight});
+
+    max-width: $max-width;
+    margin: 0 auto;
+
+    .logo {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 15rem;
+            height: 15rem;
+            object-fit: contain;
+            object-fit: contain;
+        }
+    }
+
+    .form-shortner {
+        max-width: 80rem;
+        height: 37rem;
+        margin: 0 auto;
+
+        background-color: $color-bg;
+        border-radius: 0.5rem;
+
+        form {
+            padding-top: 3.6rem;
+
+            .input-group {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 auto;
+                width: 93%;
+                height: 5rem;
+                border-radius: 0.5rem;
+                box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+
+                input {
+                    width: 87%;
+                    height: 100%;
+                    border: none;
+                    border-radius: 0.5rem;
+                    padding: 0 1rem;
+                    margin-right: 1rem;
+
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                    color: $color-text;
+                    background-color: $color-bg;
+
+                    &:focus {
+                        outline-color: $color-primary;
+                    }
+                }
+
+                button {
+                    width: 11rem;
+                    height: 100%;
+                    border: none;
+                    border-radius: 0.5rem;
+                    background-color: $color-bg;
+                    color: $color-text;
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        background-color: $color-primary;
+                        color: $color-bg;
+                    }
+                }
+            }
+        }
+
+        .information {
+            width: 78%;
+            height: 19rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            margin-top: 22px;
+
+            p {
+                text-align: center;
+                font-size: 1.6rem;
+
+                a {
+                    display: inline;
+                    color: $color-primary;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            p:nth-child(1) {
+                margin-bottom: 1.5rem;
+            }
+            
+            p:nth-child(2), 
+            p:nth-child(3) {
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+
+}
