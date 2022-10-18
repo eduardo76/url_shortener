@@ -254,6 +254,19 @@ footer .footer-box .footer-nav ul li a {
 footer .footer-box .footer-nav ul li a:hover {
   color: #58af9b;
 }
+footer .about p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #92939d;
+  text-align: center;
+}
+footer .about p a {
+  display: inline;
+  color: #58af9b;
+}
+footer .about p a:hover {
+  text-decoration: underline;
+}
 
 main {
   width: 100%;

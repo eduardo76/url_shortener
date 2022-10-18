@@ -51,4 +51,22 @@ footer {
         }
     }
 
+    .about {
+        p {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: $color-text;
+            text-align: center;
+
+            a {
+                display: inline;
+                color: $color-primary;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
 }
