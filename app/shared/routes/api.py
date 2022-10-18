@@ -1,5 +1,5 @@
 
-from fastapi import APIRouter, Request, Header
+from fastapi import APIRouter, Request, Header, Response
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -37,9 +37,11 @@ async def register_url(url: str):
 
     message = {"success": False, "data": response.body}
 
+    return message
+
 
 @api.get("/{hash}")
-async def redirect_url(hash: str):
+async def redirect_url(hash: str, response: Response):
     """
     Redirect URL
     """
@@ -50,13 +52,14 @@ async def redirect_url(hash: str):
     request['body'] = hash
     request['header'] = Header
 
-    response = fast_api_adapter(request=request, router=redirect_url_composer())
+    response_adapter = fast_api_adapter(request=request, router=redirect_url_composer())
 
-    if response.status_code < 300:
-        message = {"success": True, "data": response.body}
+    if response_adapter.status_code < 300:
+        message = {"success": True, "data": response_adapter.body}
 
-        return message
+        response.status_code = 302
+        response.headers["Location"] = message['data']['data']['long_url']
 
-    message = {"success": False, "data": response.body}
+        return response
 
-    return message
+    message = {"success": False, "data": response_adapter.body}
