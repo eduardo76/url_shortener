@@ -16,7 +16,7 @@
 
     </head>
     <body>
-        <div id="content">{% block content %}{% endblock %}</div>
+        {% block content %}{% endblock %}
         <script async charset="utf-8" defer src="{{ url_for('static', path='webpack_bundles/main.js') }}" type="text/javascript"></script>
     </body>
 </html>

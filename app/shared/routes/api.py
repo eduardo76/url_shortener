@@ -16,6 +16,11 @@ async def index(request: Request):
     return templates.TemplateResponse("pages/home.html", {"request": request})
 
 
+@api.get("/shortened", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("pages/shortened.html", {"request": request})
+
+
 @api.post("/shorten")
 async def register_url(url: str):
     """

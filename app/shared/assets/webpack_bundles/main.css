@@ -169,6 +169,7 @@ html {
   }
 }
 body {
+  height: 100vh;
   font-size: 1.6rem;
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
@@ -218,6 +219,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
   height: 13rem;
   margin-top: 7rem;
   background-color: #2d2d39;
@@ -270,36 +272,35 @@ footer .about p a:hover {
 
 main {
   width: 100%;
-}
-main .content {
+  height: 65%;
   max-width: 1200px;
   margin: 0 auto;
 }
-main .content .logo {
+main .logo {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-main .content .logo img {
+main .logo img {
   width: 15rem;
   height: 15rem;
   -o-object-fit: contain;
      object-fit: contain;
   object-fit: contain;
 }
-main .content .form-shortner {
+main .form-shortner {
   max-width: 80rem;
   height: 28rem;
   margin: 0 auto;
   background-color: #2d2d39;
   border-radius: 0.5rem;
 }
-main .content .form-shortner form {
+main .form-shortner form {
   padding-top: 3.6rem;
 }
-main .content .form-shortner form .input-group {
+main .form-shortner form .input-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -309,7 +310,7 @@ main .content .form-shortner form .input-group {
   border-radius: 0.5rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 }
-main .content .form-shortner form .input-group input {
+main .form-shortner form .input-group input {
   width: 87%;
   height: 100%;
   border: none;
@@ -321,10 +322,10 @@ main .content .form-shortner form .input-group input {
   color: #92939d;
   background-color: #2d2d39;
 }
-main .content .form-shortner form .input-group input:focus {
+main .form-shortner form .input-group input:focus {
   outline-color: #58af9b;
 }
-main .content .form-shortner form .input-group button {
+main .form-shortner form .input-group button {
   width: 11rem;
   height: 100%;
   border: none;
@@ -336,11 +337,11 @@ main .content .form-shortner form .input-group button {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-main .content .form-shortner form .input-group button:hover {
+main .form-shortner form .input-group button:hover {
   background-color: #58af9b;
   color: #2d2d39;
 }
-main .content .form-shortner .information {
+main .form-shortner .information {
   width: 78%;
   height: 19rem;
   display: flex;
@@ -348,60 +349,60 @@ main .content .form-shortner .information {
   align-items: center;
   margin: 0 auto;
 }
-main .content .form-shortner .information p {
+main .form-shortner .information p {
   text-align: center;
   font-size: 1.6rem;
 }
-main .content .form-shortner .information p a {
+main .form-shortner .information p a {
   display: inline;
   color: #58af9b;
 }
-main .content .form-shortner .information p a:hover {
+main .form-shortner .information p a:hover {
   text-decoration: underline;
 }
-main .content .section_one {
+main .section_one {
   max-width: 80rem;
   margin: 0 auto;
   margin-top: 5rem;
 }
-main .content .section_one h2 {
+main .section_one h2 {
   font-size: 2.4rem;
   font-weight: 600;
   color: #3f4156;
   margin-bottom: 2rem;
 }
-main .content .section_one p {
+main .section_one p {
   font-size: 1.6rem;
   line-height: 1.7rem;
   font-weight: 400;
   color: #3f4156;
   margin-bottom: 2rem;
 }
-main .content .section_two {
+main .section_two {
   max-width: 80rem;
   margin: 0 auto;
   margin-top: 5rem;
 }
-main .content .section_two h2 {
+main .section_two h2 {
   font-size: 2.4rem;
   font-weight: 600;
   color: #3f4156;
   margin-bottom: 2rem;
 }
-main .content .section_two p {
+main .section_two p {
   font-size: 1.6rem;
   line-height: 1.7rem;
   font-weight: 400;
   color: #3f4156;
   margin-bottom: 2rem;
 }
-main .content .section_two .cards {
+main .section_two .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   grid-gap: 2rem;
   margin-top: 3rem;
 }
-main .content .section_two .cards .card {
+main .section_two .cards .card {
   width: 100%;
   height: 100%;
   display: flex;
@@ -413,17 +414,17 @@ main .content .section_two .cards .card {
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
   background-color: #2d2d39;
 }
-main .content .section_two .cards .card i {
+main .section_two .cards .card i {
   font-size: 3.2rem;
   color: #58af9b;
   margin-bottom: 1rem;
 }
-main .content .section_two .cards .card h3 {
+main .section_two .cards .card h3 {
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
-main .content .section_two .cards .card p {
+main .section_two .cards .card p {
   font-size: 1.6rem;
   line-height: 1.7rem;
   font-weight: 400;
