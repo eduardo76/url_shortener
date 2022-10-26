@@ -1,15 +1,16 @@
 var path = require("path");
 var webpack = require("webpack");
 var BundleTracker = require("webpack-bundle-tracker");
+
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   context: __dirname,
-  entry: ["@babel/polyfill", "./app/shared/assets/main.js"],
+  entry: ["@babel/polyfill", "./app/shared/static/main.js"],
   output: {
-    path: path.resolve("./app/shared/assets/webpack_bundles/"),
+    path: path.resolve("./app/shared/static/webpack_bundles/"),
     filename: "[name].js",
   },
   watchOptions: {
@@ -76,8 +77,8 @@ module.exports = {
       jQuery: "jquery",
       "window.jQuery": "jquery",
     }),
-    // new CopyPlugin({
-    //    patterns: [{ from: "./shared/assets/images/*", to: "../" }],
-    // }),
+    new CopyPlugin({
+      patterns: [{ from: "app/shared/static/images/*", to: "../images" }],
+    }),
   ],
 };
