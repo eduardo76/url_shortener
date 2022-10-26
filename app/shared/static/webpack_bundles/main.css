@@ -177,6 +177,10 @@ body {
   color: #92939d;
 }
 
+.is-invalid:focus {
+  outline-color: red !important;
+}
+
 header {
   width: 100%;
   height: 8rem;
