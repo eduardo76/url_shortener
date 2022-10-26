@@ -2,6 +2,7 @@
 from fastapi import APIRouter, Request, Header, Response
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.encoders import jsonable_encoder
 
 from pydantic import BaseModel
 
@@ -9,20 +10,32 @@ from ..composer import register_url_composer, redirect_url_composer
 from ..adapter import fast_api_adapter
 
 api = APIRouter()
-templates = Jinja2Templates(directory="app/shared/assets/templates")
+templates = Jinja2Templates(directory="app/shared/static/templates")
 
 @api.get("/", response_class=HTMLResponse)
-async def index(request: Request):
+async def home(request: Request):
     return templates.TemplateResponse("pages/home.html", {"request": request})
 
 
-@api.get("/shortened", response_class=HTMLResponse)
-async def index(request: Request):
-    return templates.TemplateResponse("pages/shortened.html", {"request": request})
+class UrlShortener(BaseModel):
+    id_url: int
+    long_url: str
+    short_url: str
+    status_url: str
+    total_access: int
+    updated_at: str
 
+
+@api.post("/shortened", response_class=HTMLResponse)
+async def shortened_url(request: Request, data: UrlShortener):
+    return templates.TemplateResponse("pages/shortened.html", {"request": request, "data": data})
+
+
+class Url(BaseModel):
+    long_url: str
 
 @api.post("/shorten")
-async def register_url(url: str):
+async def register_url(url: Url):
     """
     Register URL
     """
@@ -30,7 +43,7 @@ async def register_url(url: str):
     message = {}
     request = dict()
     request['request'] = Request
-    request['body'] = url
+    request['body'] = url.long_url
     request['header'] = Header
 
     response = fast_api_adapter(request=request, router=register_url_composer())

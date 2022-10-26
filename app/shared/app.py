@@ -9,6 +9,6 @@ app = FastAPI(
     redoc_url="/redoc",
 )
 
-app.mount("/assets", StaticFiles(directory="app/shared/assets"), name="static")
+app.mount("/static", StaticFiles(directory="app/shared/static"), name="static")
 
 app.include_router(api, prefix="")
