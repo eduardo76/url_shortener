@@ -2,13 +2,19 @@ version: "3"
 
 services:
   db:
-    image: postgres:11
+    image: postgres:latest
+    container_name: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     ports:
       - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=test_db
+    restart: always
+    networks:
+      - url-shortener-app-network
 
   app:
     build: .
@@ -20,26 +26,27 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      - url-shortener-app-network
+    restart: always
 
   web:
     image: nginx:1.15
     container_name: url-shortener-web
     volumes:
-      - ./app:/usr/src/app
+      - ./app:/app
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "8080:80"
       - "443:443"
     depends_on:
       - app
+    networks:
+      - url-shortener-app-network
 
-  # pgadmin:
-  #   container_name: pgadmin
-  #   image: dpage/pgadmin4
-  #   environment:
-  #     - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
-  #     - PGADMIN_DEFAULT_PASSWORD=admin
-  #   ports:
-  #     - "5050:80"
-  #   depends_on:
-  #     - db
+volumes:
+  postgres_data:
+
+networks:
+  url-shortener-app-network:
+    driver: bridge
