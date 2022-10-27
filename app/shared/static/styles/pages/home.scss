@@ -1,12 +1,12 @@
 @import "../commom/variables.scss";
 
-main {
+.main-home {
     width: 100%;
     height: 65%;
-    // height: calc(100vh - #{$headerHeight});
-
     max-width: $max-width;
     margin: 0 auto;
+    margin-bottom: 17rem;
+
 
     .logo {
         width: 100%;

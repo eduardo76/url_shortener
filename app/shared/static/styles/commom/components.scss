@@ -1,0 +1,35 @@
+input {
+  width: 87%;
+  height: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  margin-right: 1rem;
+
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: $color-text;
+  background-color: $color-bg;
+
+  &:focus {
+    outline-color: $color-primary;
+  }
+}
+
+button {
+  width: 11rem;
+  height: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: $color-bg;
+  color: $color-text;
+  font-size: 1.6rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-bg;
+  }
+}
