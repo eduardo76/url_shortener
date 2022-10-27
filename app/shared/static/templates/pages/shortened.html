@@ -11,10 +11,10 @@
             </div>
 
             <div class="form-shortner">
-                <form action="">
+                <form action="javascript:void(0);">
                     <div class="input-group">
-                        <input type="text" placeholder="Cole seu like aqui" value="{{ data.short_url }}">
-                        <button type="submit">Copia URL</button>
+                        <input type="text" placeholder="Cole seu like aqui" value="{{ data.short_url }}" id="input-short-url" readonly>
+                        <button id="btn-copy">Copia URL</button>
                     </div>
                 </form>
 
