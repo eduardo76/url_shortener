@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block title %}URL encurtada{% endblock %}
+
+{% block content %}
+    {% include 'parts/header.html' %}
+    <main class="main-total-clicks">
+        <div class="logo">
+            <img src="{{ url_for('static', path='images/logo-01.png') }}" alt="">
+        </div>
+        
+        <div class="content">
+            <div class="form-total-clicks">
+                <div class="infor">
+                    <h2>Contador de Cliques da URL</h2>
+                    <p>Digite a URL curta abaixo para descobrir quantos cliques ela recebeu até agora</p>
+                </div>
+
+                <form action="javascript:void(0);">
+                    <div class="input-group">
+                        <input type="text" placeholder="Exemplo: encurtador.com/DeFgH" value="" id="input-total-clicks">
+                        <button id="btn-total-clicks">Contar cliques</button>
+                    </div>
+                </form>
+
+                <div class="result-total-clicks">
+                    <div class="result-infor">
+                        <p>O número total de cliques que seu link recebeu até agora.</p>
+                    </div>
+                    <div class="result">
+                        <span>10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% include 'parts/footer.html' %}
+{% endblock %}
