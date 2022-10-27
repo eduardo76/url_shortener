@@ -13,7 +13,7 @@
             <div class="form-shortner">
                 <form action="">
                     <div class="input-group">
-                        <input type="text" placeholder="Cole seu like aqui" value="{{ short_url }}">
+                        <input type="text" placeholder="Cole seu like aqui" value="{{ data.short_url }}">
                         <button type="submit">Copia URL</button>
                     </div>
                 </form>
@@ -26,11 +26,13 @@
                     </p>
 
 
-                    <p>URL Longa: <a href="">https://www.encurtador.com.br/</a></p>
+                    <p>
+                        URL Longa: <a href="{{ data.long_url }}" target="_black">{{ data.long_url }}</a>
+                    </p>
 
                     <p>
-                        Acompanhe o <a href="">total de cliques</a> em tempo real da sua URL encurtada.
-                        Crie outra <a href="">URL encurtada</a>.
+                        Acompanhe o <a href="">total de cliques</a> em tempo real da sua URL encurtada. </br>
+                        Crie outra <a href="{{ url_for('home') }}">URL encurtada</a>.
                     </p>
                 </div>
             </div>
