@@ -70,7 +70,21 @@ class UrlRepository(UrlRepositoryInterface):
             try:
                 url_entity = db_connection.session.query(UrlShortenerEntity).filter_by(id_url=url_id).one()
 
-                return url_entity.to_domain()
+                return {
+                    "success": True,
+                    "message": "Url found successfully",
+                    "data": {
+                        "id_url": url_entity.id_url,
+                        "long_url": url_entity.long_url,
+                        "short_url": url_entity.short_url,
+                        "id_hash": url_entity.id_hash,
+                        "hash_url": url_entity.hash_url,
+                        "status_url": url_entity.status_url,
+                        "total_access": url_entity.total_access,
+                        "created_at": url_entity.created_at,
+                        "updated_at": url_entity.updated_at,
+                    }
+                }
             except NoResultFound:
                 return {"success": False, "data": "Url not found"}
             except:
