@@ -80,6 +80,32 @@ main {
                     }
                 }
             }
+
+            .url-copied {
+                display: flex;
+                justify-content: end;
+                margin: 1rem 4rem;
+                
+                
+                span {
+                    display: none;
+                    align-items: center;
+                    padding: 0.9rem;
+                    border-radius: 0.9rem;
+
+                    font-size: 1.3rem;
+                    color: black;
+                    background-color: #58af9b;
+
+                    animation: hidemessages 400ms 5s ease-out forwards;
+
+
+                    i {
+                        font-size: 1.8rem;
+                    }
+                }
+
+            }
         }
 
         .information {
@@ -117,4 +143,12 @@ main {
         }
     }
 
+}
+
+
+@keyframes hidemessages {
+   to {
+      top: -50px;
+      opacity: 0;
+   }
 }
