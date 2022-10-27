@@ -1,8 +1,6 @@
-
 from fastapi import APIRouter, Request, Header, Response
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from fastapi.encoders import jsonable_encoder
 
 from pydantic import BaseModel
 
@@ -11,6 +9,7 @@ from ..adapter import fast_api_adapter
 
 api = APIRouter()
 templates = Jinja2Templates(directory="app/shared/static/templates")
+
 
 @api.get("/", response_class=HTMLResponse)
 async def home(request: Request):
@@ -30,6 +29,10 @@ async def shortened_url(request: Request, id_url: str):
 
     return templates.TemplateResponse("pages/shortened.html", {"request": request, "data": data})
 
+
+@api.get("/total-clicks", response_class=HTMLResponse)
+async def total_clicks(request: Request):
+    return templates.TemplateResponse("pages/total-clicks.html", {"request": request})
 
 class Url(BaseModel):
     long_url: str
@@ -56,7 +59,6 @@ async def register_url(url: Url):
     message = {"success": False, "data": response.body}
 
     return message
-
 
 @api.get("/{hash}")
 async def redirect_url(hash: str, response: Response):
