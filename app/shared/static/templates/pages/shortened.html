@@ -4,7 +4,7 @@
 
 {% block content %}
     {% include 'parts/header.html' %}
-    <main>
+    <main class="main-shortened">
         <div class="content">
             <div class="logo">
                 <img src="{{ url_for('static', path='images/logo-01.png') }}" alt="">
@@ -38,7 +38,7 @@
                     </p>
 
                     <p>
-                        Acompanhe o <a href="">total de cliques</a> em tempo real da sua URL encurtada. </br>
+                        Acompanhe o <a href="{{ url_for('total_clicks') }}">total de cliques</a> em tempo real da sua URL encurtada. </br>
                         Crie outra <a href="{{ url_for('home') }}">URL encurtada</a>.
                     </p>
                 </div>
