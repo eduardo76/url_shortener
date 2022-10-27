@@ -1,20 +1,5 @@
 import Utils from "./utils.js";
 
-const fetchForm = async (url, method, data) => {
-  let headers = new Headers();
-
-  headers.append("X-Requested-With", "XMLHttpRequest");
-  headers.append("Content-Type", "application/json");
-  headers.append("Accept", "application/json");
-
-  return await fetch(url, {
-    method: `${method}`,
-    headers,
-    body: data ? data : null,
-    processData: false,
-    contentType: false,
-  });
-};
 
 const sendFormShortenUrl = async () => {
   const form = document.getElementById("form-shorten-url");
@@ -35,7 +20,7 @@ const sendFormShortenUrl = async () => {
       return;
     }
 
-    let response = await fetchForm(url, method, data);
+    let response = await Utils.fetchForm(url, method, data);
     let json = await response.json();
 
     const responseData = json.data.data
@@ -45,7 +30,6 @@ const sendFormShortenUrl = async () => {
     if (json.success) {
       window.location.href = newUrl;
     }
-
   });
 };
 
