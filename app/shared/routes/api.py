@@ -6,7 +6,7 @@ from fastapi.encoders import jsonable_encoder
 
 from pydantic import BaseModel
 
-from ..composer import register_url_composer, redirect_url_composer
+from ..composer import register_url_composer, redirect_url_composer, find_url_composer
 from ..adapter import fast_api_adapter
 
 api = APIRouter()
@@ -17,17 +17,17 @@ async def home(request: Request):
     return templates.TemplateResponse("pages/home.html", {"request": request})
 
 
-class UrlShortener(BaseModel):
-    id_url: int
-    long_url: str
-    short_url: str
-    status_url: str
-    total_access: int
-    updated_at: str
+@api.get("/shortened/{id_url}", response_class=HTMLResponse)
+async def shortened_url(request: Request, id_url: str):
+    
+    requestDict = dict()
+    requestDict['request'] = request
+    requestDict['body'] = id_url
+    requestDict['header'] = Header
 
+    response_data = fast_api_adapter(request=requestDict, router=find_url_composer())
+    data = response_data.body['data']
 
-@api.post("/shortened", response_class=HTMLResponse)
-async def shortened_url(request: Request, data: UrlShortener):
     return templates.TemplateResponse("pages/shortened.html", {"request": request, "data": data})
 
 
@@ -81,3 +81,5 @@ async def redirect_url(hash: str, response: Response):
         return response
 
     message = {"success": False, "data": response_adapter.body}
+
+    return message
