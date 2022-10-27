@@ -10,7 +10,7 @@ const fetchForm = async (url, method, data) => {
   return await fetch(url, {
     method: `${method}`,
     headers,
-    body: data,
+    body: data ? data : null,
     processData: false,
     contentType: false,
   });
@@ -25,9 +25,6 @@ const sendFormShortenUrl = async () => {
     let formData = new FormData(form);
     const data = JSON.stringify(Object.fromEntries(formData));
     const url = form.getAttribute("data-action-shorten");
-    const urlShortened = form.getAttribute("data-action-shortened");
-
-    console.log("urlShortened ====================>", urlShortened);
 
     const method = form.getAttribute("method");
     const inputUrl = document.getElementById("long-url");
@@ -42,28 +39,13 @@ const sendFormShortenUrl = async () => {
     let json = await response.json();
 
     const responseData = json.data.data
-
-    formData = new FormData();
-
-    formData.append("id_url", responseData.id_url);
-    formData.append("long_url", responseData.long_url);
-    formData.append("short_url", responseData.short_url);
-    formData.append("status_url", responseData.status_url);
-    formData.append("total_access", responseData.total_access);
-    formData.append("updated_at", responseData.updated_at);
+    const id_url = responseData.id_url;
+    const newUrl = `/shortened/${id_url}`;
 
     if (json.success) {
-      response = await fetchForm(urlShortened, method, formData);
-      const json = await response.json();
-      
-      console.log("response ===============:", response);
-      console.log("json ==========", json);
-
+      window.location.href = newUrl;
     }
 
-    // console.log("response ===============:", response);
-    // console.log("json ==========", json);
-    
   });
 };
 
