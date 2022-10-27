@@ -5,7 +5,10 @@ btnCopy.addEventListener("click", async () => {
 
     await navigator.clipboard.writeText(inputShortUrl.value);
 
-    btnCopy.innerHTML = "Copied!";
     document.querySelector(".url-copied span").style.display = "flex";
+
+    setTimeout(() => {
+        document.querySelector(".url-copied span").style.display = "none";
+    }, 2000);
 })
 
