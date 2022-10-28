@@ -146,6 +146,8 @@ table {
 
 html {
   font-size: 62.5%;
+  position: relative;
+  min-height: 100%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -169,6 +171,7 @@ html {
   }
 }
 body {
+  height: 100%;
   font-size: 1.6rem;
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
@@ -179,6 +182,39 @@ body {
 
 .is-invalid:focus {
   outline-color: red !important;
+}
+
+input {
+  width: 87%;
+  height: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  margin-right: 1rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #92939d;
+  background-color: #2d2d39;
+}
+input:focus {
+  outline-color: #58af9b;
+}
+
+button {
+  width: 11rem;
+  height: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #2d2d39;
+  color: #92939d;
+  font-size: 1.6rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  background-color: #58af9b;
+  color: #2d2d39;
 }
 
 header {
@@ -219,6 +255,8 @@ header nav ul li a:hover {
 }
 
 footer {
+  position: absolute;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -244,7 +282,7 @@ footer .footer-box .footer-nav {
 }
 footer .footer-box .footer-nav ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -273,37 +311,38 @@ footer .about p a:hover {
   text-decoration: underline;
 }
 
-main {
+.main-home {
   width: 100%;
   height: 65%;
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 17rem;
 }
-main .logo {
+.main-home .logo {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-main .logo img {
+.main-home .logo img {
   width: 15rem;
   height: 15rem;
   -o-object-fit: contain;
      object-fit: contain;
   object-fit: contain;
 }
-main .form-shortner {
+.main-home .form-shortner {
   max-width: 80rem;
   height: 28rem;
   margin: 0 auto;
   background-color: #2d2d39;
   border-radius: 0.5rem;
 }
-main .form-shortner form {
+.main-home .form-shortner form {
   padding-top: 3.6rem;
 }
-main .form-shortner form .input-group {
+.main-home .form-shortner form .input-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -313,7 +352,7 @@ main .form-shortner form .input-group {
   border-radius: 0.5rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 }
-main .form-shortner form .input-group input {
+.main-home .form-shortner form .input-group input {
   width: 87%;
   height: 100%;
   border: none;
@@ -325,10 +364,10 @@ main .form-shortner form .input-group input {
   color: #92939d;
   background-color: #2d2d39;
 }
-main .form-shortner form .input-group input:focus {
+.main-home .form-shortner form .input-group input:focus {
   outline-color: #58af9b;
 }
-main .form-shortner form .input-group button {
+.main-home .form-shortner form .input-group button {
   width: 11rem;
   height: 100%;
   border: none;
@@ -340,11 +379,11 @@ main .form-shortner form .input-group button {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-main .form-shortner form .input-group button:hover {
+.main-home .form-shortner form .input-group button:hover {
   background-color: #58af9b;
   color: #2d2d39;
 }
-main .form-shortner .information {
+.main-home .form-shortner .information {
   width: 78%;
   height: 19rem;
   display: flex;
@@ -352,60 +391,60 @@ main .form-shortner .information {
   align-items: center;
   margin: 0 auto;
 }
-main .form-shortner .information p {
+.main-home .form-shortner .information p {
   text-align: center;
   font-size: 1.6rem;
 }
-main .form-shortner .information p a {
+.main-home .form-shortner .information p a {
   display: inline;
   color: #58af9b;
 }
-main .form-shortner .information p a:hover {
+.main-home .form-shortner .information p a:hover {
   text-decoration: underline;
 }
-main .section_one {
+.main-home .section_one {
   max-width: 80rem;
   margin: 0 auto;
   margin-top: 5rem;
 }
-main .section_one h2 {
+.main-home .section_one h2 {
   font-size: 2.4rem;
   font-weight: 600;
   color: #3f4156;
   margin-bottom: 2rem;
 }
-main .section_one p {
+.main-home .section_one p {
   font-size: 1.6rem;
   line-height: 1.7rem;
   font-weight: 400;
   color: #3f4156;
   margin-bottom: 2rem;
 }
-main .section_two {
+.main-home .section_two {
   max-width: 80rem;
   margin: 0 auto;
   margin-top: 5rem;
 }
-main .section_two h2 {
+.main-home .section_two h2 {
   font-size: 2.4rem;
   font-weight: 600;
   color: #3f4156;
   margin-bottom: 2rem;
 }
-main .section_two p {
+.main-home .section_two p {
   font-size: 1.6rem;
   line-height: 1.7rem;
   font-weight: 400;
   color: #3f4156;
   margin-bottom: 2rem;
 }
-main .section_two .cards {
+.main-home .section_two .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   grid-gap: 2rem;
   margin-top: 3rem;
 }
-main .section_two .cards .card {
+.main-home .section_two .cards .card {
   width: 100%;
   height: 100%;
   display: flex;
@@ -417,17 +456,17 @@ main .section_two .cards .card {
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
   background-color: #2d2d39;
 }
-main .section_two .cards .card i {
+.main-home .section_two .cards .card i {
   font-size: 3.2rem;
   color: #58af9b;
   margin-bottom: 1rem;
 }
-main .section_two .cards .card h3 {
+.main-home .section_two .cards .card h3 {
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
-main .section_two .cards .card p {
+.main-home .section_two .cards .card p {
   font-size: 1.6rem;
   line-height: 1.7rem;
   font-weight: 400;
@@ -435,37 +474,37 @@ main .section_two .cards .card p {
   margin-bottom: 1rem;
 }
 
-main {
+.main-shortened {
   width: 100%;
-  height: 65%;
   max-width: 1200px;
+  height: 65%;
   margin: 0 auto;
 }
-main .logo {
+.main-shortened .logo {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-main .logo img {
+.main-shortened .logo img {
   width: 15rem;
   height: 15rem;
   -o-object-fit: contain;
      object-fit: contain;
   object-fit: contain;
 }
-main .form-shortner {
+.main-shortened .form-shortner {
   max-width: 80rem;
   height: 37rem;
   margin: 0 auto;
   background-color: #2d2d39;
   border-radius: 0.5rem;
 }
-main .form-shortner form {
+.main-shortened .form-shortner form {
   padding-top: 3.6rem;
 }
-main .form-shortner form .input-group {
+.main-shortened .form-shortner form .input-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -475,38 +514,25 @@ main .form-shortner form .input-group {
   border-radius: 0.5rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 }
-main .form-shortner form .input-group input {
-  width: 87%;
-  height: 100%;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0 1rem;
-  margin-right: 1rem;
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: #92939d;
-  background-color: #2d2d39;
+.main-shortened .form-shortner form .url-copied {
+  display: flex;
+  justify-content: end;
+  margin: 1rem 4rem;
 }
-main .form-shortner form .input-group input:focus {
-  outline-color: #58af9b;
-}
-main .form-shortner form .input-group button {
-  width: 11rem;
-  height: 100%;
-  border: none;
-  border-radius: 0.5rem;
-  background-color: #2d2d39;
-  color: #92939d;
-  font-size: 1.6rem;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-main .form-shortner form .input-group button:hover {
+.main-shortened .form-shortner form .url-copied span {
+  display: none;
+  align-items: center;
+  padding: 0.9rem;
+  border-radius: 0.9rem;
+  font-size: 1.3rem;
+  color: black;
   background-color: #58af9b;
-  color: #2d2d39;
+  animation: hidemessages 400ms 5s ease-out forwards;
 }
-main .form-shortner .information {
+.main-shortened .form-shortner form .url-copied span i {
+  font-size: 1.8rem;
+}
+.main-shortened .form-shortner .information {
   width: 78%;
   height: 19rem;
   display: flex;
@@ -516,21 +542,100 @@ main .form-shortner .information {
   margin: 0 auto;
   margin-top: 22px;
 }
-main .form-shortner .information p {
+.main-shortened .form-shortner .information p {
   text-align: center;
   font-size: 1.6rem;
 }
-main .form-shortner .information p a {
+.main-shortened .form-shortner .information p a {
   display: inline;
   color: #58af9b;
 }
-main .form-shortner .information p a:hover {
+.main-shortened .form-shortner .information p a:hover {
   text-decoration: underline;
 }
-main .form-shortner .information p:nth-child(1) {
+.main-shortened .form-shortner .information p:nth-child(1) {
   margin-bottom: 1.5rem;
 }
-main .form-shortner .information p:nth-child(2),
-main .form-shortner .information p:nth-child(3) {
+.main-shortened .form-shortner .information p:nth-child(2),
+.main-shortened .form-shortner .information p:nth-child(3) {
   margin-bottom: 1.5rem;
+}
+
+@keyframes hidemessages {
+  to {
+    top: -50px;
+    opacity: 0;
+  }
+}
+.main-total-clicks {
+  width: 100%;
+  max-width: 1200px;
+  height: 65%;
+  margin: 0 auto;
+}
+.main-total-clicks .logo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-total-clicks .logo img {
+  width: 15rem;
+  height: 15rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  object-fit: contain;
+}
+.main-total-clicks .form-total-clicks {
+  max-width: 80rem;
+  height: 37rem;
+  margin: 0 auto;
+  background-color: #2d2d39;
+  border-radius: 0.5rem;
+}
+.main-total-clicks .form-total-clicks .infor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+}
+.main-total-clicks .form-total-clicks .infor h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+.main-total-clicks .form-total-clicks form {
+  padding-top: 3.6rem;
+}
+.main-total-clicks .form-total-clicks form .input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 93%;
+  height: 5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+.main-total-clicks .form-total-clicks .result-total-clicks {
+  display: none;
+  justify-content: space-between;
+  margin: 4rem;
+  height: 6rem;
+}
+.main-total-clicks .form-total-clicks .result-total-clicks .result-infor {
+  display: flex;
+  align-items: center;
+}
+.main-total-clicks .form-total-clicks .result-total-clicks .result {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+.main-total-clicks .form-total-clicks .result-total-clicks .result span {
+  display: flex;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #58af9b;
 }
