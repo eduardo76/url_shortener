@@ -1,4 +1,6 @@
 @import "../commom/variables.scss";
+@import "../mixins/mixins.scss";
+
 
 .main-total-clicks {
     width: 100%;
@@ -29,11 +31,21 @@
         background-color: $color-bg;
         border-radius: 0.5rem;
 
+        @include breakpoint($tabletSize) {
+            max-width: 94%;
+        }
+
         .infor {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-top: 3rem;
+
+            @include breakpoint($tabletSize) {
+                width: 91%;
+                margin: 0 auto;
+
+            }
 
             h2 {
                 font-size: 2.4rem;

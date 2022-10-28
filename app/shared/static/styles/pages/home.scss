@@ -1,4 +1,6 @@
 @import "../commom/variables.scss";
+@import "../mixins/mixins.scss";
+
 
 .main-home {
     width: 100%;
@@ -30,6 +32,12 @@
 
         background-color: $color-bg;
         border-radius: 0.5rem;
+
+
+        @include breakpoint($tabletSize) {
+            max-width: 94%;
+        }
+
 
         form {
             padding-top: 3.6rem;
@@ -112,6 +120,11 @@
         margin: 0 auto;
         margin-top: 5rem;
 
+        @include breakpoint($tabletSize) {
+            max-width: 92%; 
+        }
+
+
         h2 {
             font-size: 2.4rem;
             font-weight: 600;
@@ -134,6 +147,10 @@
         max-width: 80rem;
         margin: 0 auto;
         margin-top: 5rem;
+
+        @include breakpoint($tabletSize) {
+           max-width: 92%;
+        }
 
         h2 {
             font-size: 2.4rem;

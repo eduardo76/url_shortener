@@ -1,4 +1,5 @@
 @import "../commom/variables.scss";
+@import "../mixins/mixins.scss";
 
 
 header {
@@ -8,13 +9,21 @@ header {
     
 
     nav {
-
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;        
         
         max-width: $max-width;
+
+        @include breakpoint($desktopSize) {
+            // width < 600?
+            max-width: 70%;
+        }
+
+        @include breakpoint($mobileSize) {
+            max-width: 91%;
+        }
 
         img {
             object-fit: contain;
