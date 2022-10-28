@@ -13,11 +13,17 @@ templates = Jinja2Templates(directory="app/shared/static/templates")
 
 @api.get("/", response_class=HTMLResponse)
 async def home(request: Request):
+    """
+    Home page
+    """
     return templates.TemplateResponse("pages/home.html", {"request": request})
 
 
 @api.get("/shortened/{id_url}", response_class=HTMLResponse)
 async def shortened_url(request: Request, id_url: str):
+    """
+    Redirect to the original url
+    """
     
     requestDict = dict()
     requestDict['request'] = request
@@ -34,13 +40,39 @@ async def shortened_url(request: Request, id_url: str):
 async def total_clicks(request: Request):
     return templates.TemplateResponse("pages/total-clicks.html", {"request": request})
 
+
+@api.get("/total-clicks-result/{hash}")
+async def total_clicks_result(hash: str):
+    """
+    This endpoint is used to get the total clicks of a shortened url
+    """
+
+    message = {}
+    request = dict()
+    request['request'] = Request
+    request['body'] = hash
+    request['header'] = Header
+
+    response_adapter = fast_api_adapter(request=request, router=redirect_url_composer())
+
+    total_access = response_adapter.body['data']['total_access']
+
+    if response_adapter.status_code < 300:
+        message = {"success": True, "total_access": total_access}
+        return message
+
+    message = {"success": False, "data": response_adapter.body}
+    return message
+
+
 class Url(BaseModel):
     long_url: str
+
 
 @api.post("/shorten")
 async def register_url(url: Url):
     """
-    Register URL
+    This endpoint is used to register a new url
     """
 
     message = {}
@@ -60,10 +92,11 @@ async def register_url(url: Url):
 
     return message
 
+
 @api.get("/{hash}")
 async def redirect_url(hash: str, response: Response):
     """
-    Redirect URL
+    This endpoint is used to redirect a shortened url
     """
 
     message = {}
@@ -83,5 +116,4 @@ async def redirect_url(hash: str, response: Response):
         return response
 
     message = {"success": False, "data": response_adapter.body}
-
     return message
