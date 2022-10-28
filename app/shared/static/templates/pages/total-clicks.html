@@ -16,10 +16,14 @@
                     <p>Digite a URL curta abaixo para descobrir quantos cliques ela recebeu até agora</p>
                 </div>
 
-                <form action="javascript:void(0);">
+                <form 
+                    action="javascript:void(0);" 
+                    id="form-total-clicks"
+                    method="GET"
+                >
                     <div class="input-group">
-                        <input type="text" placeholder="Exemplo: encurtador.com/DeFgH" value="" id="input-total-clicks">
-                        <button id="btn-total-clicks">Contar cliques</button>
+                        <input type="text" placeholder="Exemplo: encurtador.com/DeFgH" value="" id="input-total-clicks" name="short_url">
+                        <button id="btn-total-clicks" type="submit">Contar cliques</button>
                     </div>
                 </form>
 
