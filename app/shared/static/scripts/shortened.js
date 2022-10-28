@@ -1,6 +1,6 @@
 let btnCopy = document.getElementById("btn-copy");
 
-btnCopy.addEventListener("click", async () => {
+btnCopy?.addEventListener("click", async () => {
     let inputShortUrl = document.getElementById("input-short-url");
 
     await navigator.clipboard.writeText(inputShortUrl.value);
