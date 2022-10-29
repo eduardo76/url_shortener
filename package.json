@@ -21,9 +21,10 @@
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.16.7",
     "@babel/polyfill": "^7.12.1",
-    "embla-carousel": "^6.0.1",
-    "embla-carousel-autoplay": "^6.1.1",
-    "jquery": "^3.6.0"
+    "i18next": "^21.8.14",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "jquery": "^3.5.1",
+    "jquery-i18next": "^1.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
